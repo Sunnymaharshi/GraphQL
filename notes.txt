@@ -1,0 +1,43 @@
+Notes: 
+    REST (REpresentational State Transfer)
+        is basically an architectural style of development having some principles   
+    REST-ful API
+        standardized implementation of the REST architecture
+        architectural style for an application programming interface that uses 
+        HTTP requests to access and use data. 
+        HTTP method
+            GET
+            POST
+            PUT
+            DELETE etc
+        Endpoint
+            URL to access or update data
+            ex: http://myapi.com/posts/186
+        Header
+            contains the details needed to execute the call and handle the response.
+            ex:authentication data, an encryption key etc 
+        Body
+            may contain the new data to be added to the server through a POST or PUT method.
+    
+    Cons of REST-ful APIs 
+        1.creating Endpoint for fetching complex data would be difficult
+        ex: /users/432/friends_with_companies_positions 
+        list of companies assosiated with a user friends 
+        2.too many http requests to get the data we need
+        3.might fetch the more data than we needed
+    
+    GraphQL
+        visualize that data is connected in a Graph Structure (nodes,edges)
+        we write query to fetch the data we needed
+        for list of companies assosiated with a user friends
+            query {
+                user(id: "432"){
+                    friends{
+                        company{
+                            name
+                        }
+                    }
+                }
+            }
+        
+
