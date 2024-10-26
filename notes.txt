@@ -27,7 +27,27 @@ Notes:
         3.might fetch the more data than we needed
     
     GraphQL
-        visualize that data is connected in a Graph Structure (nodes,edges)
+        A query language for your API and a server-side runtime
+        for executing queries using a type system you define for your data
+        we don't change anything in our existing databases(MySQL,MongoDB etc)        
+        It visualizes the data in a Graph Structure (nodes,edges)
+    
+    GraphQL Schema
+        to describe our application data and it's relations 
+        ex: {
+            name:'User',
+            fields:{
+                id: {type: GraphQLString},
+                firstName: {type: GraphQLString},
+                age: {type:GraphQLInt}
+            }
+        }
+
+    Root Query 
+        start point in GraphQL server 
+        when we request a query to GQL server, it goes first to root query 
+    
+    GraphQL Query  
         we write query to fetch the data we needed
         for list of companies assosiated with a user friends
             query {
@@ -39,5 +59,32 @@ Notes:
                     }
                 }
             }
-        
+    Query fragment
+        we can define set of properties into a fragment
+        adding Type after on, checks if those properties are in that type
+        ex: fragment companyDetails on Company {
+            id
+            name
+            description
+        }
+        usage in query:
+            {
+                company(id:"1"){
+                    ...companyDetails
+                }
+            }
+    
+    mutation query 
+        used to mutate data in database 
+        must have 'mutation' keyword before query
+        ex: mutation {
+            addUser(firstName:"Nick",age:21){
+                id
+                firstName
+                age
+            }
+        }
+
+
+
 
